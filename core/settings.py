@@ -59,10 +59,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
-# Database
-# আপনি যেহেতু MongoDB/PyMongo ব্যবহার করছেন, Django-র ডিফল্ট SQLite এখানে থাকবে 
-# কারণ Django-র ইন্টারনাল অথেন্টিকেশন সিস্টেম এটি ছাড়া কাজ করতে চায় না। 
-# তবে আপনার ট্রেনের ডাটা এবং ইউজার ডাটা সব MongoDB-তেই সেভ হবে (আমরা api/db.py দিয়ে যা করেছি)।
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

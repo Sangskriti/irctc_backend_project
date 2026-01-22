@@ -24,18 +24,18 @@ class LoginView(APIView):
 
 # --- Train APIs ---
 class TrainView(APIView):
-    def get(self, request): # Search Trains
+    def get(self, request): 
         start_time = time.time()
         src, dest = request.query_params.get('source'), request.query_params.get('destination')
         trains = list(trains_col.find({"source": src, "destination": dest}, {"_id": 1, "name": 1, "available_seats": 1}))
-        for t in trains: t['_id'] = str(t['_id']) # Convert ObjectId to string
+        for t in trains: t['_id'] = str(t['_id']) 
         
         log_api_request("/api/trains/search/", request.query_params.dict(), "guest", start_time)
         return Response(trains)
 
     @token_required
-    def post(self, request): # Admin only: Add Train
-        # নিরাপদভাবে ইউজার ডাটা নেওয়া
+    def post(self, request): 
+        
         user_info = getattr(request, 'user_info', None)
         
         if not user_info or not user_info.get('is_admin'): 
